@@ -6,6 +6,8 @@ const server = http.createServer((req,res) => {
     res.end('Curso de Node');
 })
 
-server.listen(port, ()=> {
+server.listen(port,()=> {
     console.log(`Servidor escutando em http://localhost:${port}`)
-})
+});
+
+module.exports = {server, port}
