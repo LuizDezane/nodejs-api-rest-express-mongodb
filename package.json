@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev" : "nodemon ./src/server.js",
+    "dev": "nodemon ./src/server.js",
     "test": "/testes/server.test.ts",
     "server": "./src/server.js"
   },
@@ -14,5 +15,8 @@
   "devDependencies": {
     "jest": "^28.1.1",
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "4.17.3"
   }
 }
