@@ -1,13 +1,19 @@
 import express from "express";
+import db from "./config/dbConnect.js"
+
+db.on("error", console.log.bind(console, 'Erro de conexão'))
+db.once("open", () => {
+    console.log("Conexão com o banco feita com sucesso")
+})
 
 const app = express();
 
 app.use(express.json())
 
 const animes = [
-    {id: 1, "titulo" : "One piece"},
-    {id: 2, "titulo": "Naruto"},
-    {id: 3, "titulo": "Hunter x Hunter"},
+    {id: 1, titulo : "One piece"},
+    {id: 2, titulo : "Naruto"},
+    {id: 3, titulo : "Hunter x Hunter"},
 ]
 
 app.get('/', (req, res) => {
