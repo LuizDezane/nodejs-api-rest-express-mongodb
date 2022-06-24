@@ -1,6 +1,7 @@
 import express from "express";
 import db from "./config/dbConnect.js"
 import animes from "./models/Anime.js"
+import routes from "./routes/index.js"
 
 db.on("error", console.log.bind(console, 'Erro de conexão'))
 db.once("open", () => {
@@ -11,22 +12,12 @@ const app = express();
 
 app.use(express.json())
 
+routes(app)
+
 // const animes = [
 //     {id: 1, titulo : "One piece"},
 //     {id: 2, titulo : "Naruto"},
-//     {id: 3, titulo : "Hunter x Hunter"},
-// ]
-
-app.get('/', (req, res) => {
-    res.status(200).send('Curso de Node t');
-})
-
-app.get('/animes', (req, res) => {
-    animes.find((err, animes) => {
-        res.status(200).json(animes);
-    })
-    
-})
+//     {id: 3, titulo : "Hunter x Hunter"},]
 
 app.post('/animes',(req,res) => {
     animes.push(req.body);
