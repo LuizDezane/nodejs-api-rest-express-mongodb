@@ -7,6 +7,18 @@ class AnimeController{
             res.status(200).json(animes);
     }) 
     }
+    static listarAnimesPorId = (req, res) => {
+        const id = req.params.id;
+
+        animes.findById(id, (err, animes) => {
+            if(err){
+                res.status(400).send({message: `${err.message} - Id do anime não localizado.`})
+            } else {
+                res.status(200).send(animes);
+            }
+
+        })
+    }
 
     static cadastrarAnime = (req, res) => {
         let anime = new animes(req.body);
@@ -20,6 +32,21 @@ class AnimeController{
             }
         })
     }
+
+    static atualizarAnime = (req, res) => {
+        const id = req.params.id;
+
+        animes.findByIdAndUpdate(id, {$set: req.body},(err) => {
+            if(!err){
+                res.status(200).send({message: 'Anime atualizado com sucesso'})
+            } else {
+                res.status(500).send({message: err.message})
+            }
+        })
+
+    }
+
+
 }
 
 export default AnimeController
