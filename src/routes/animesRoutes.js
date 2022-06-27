@@ -8,5 +8,6 @@ router
   .get("/animes/:id", AnimeController.listarAnimesPorId)
   .post("/animes", AnimeController.cadastrarAnime)
   .put("/animes/:id", AnimeController.atualizarAnime)
+  .delete("animes/:id", AnimeController.deletarAnime)
 
 export default router;

@@ -19,7 +19,6 @@ class AnimeController{
 
         })
     }
-
     static cadastrarAnime = (req, res) => {
         let anime = new animes(req.body);
 
@@ -32,7 +31,6 @@ class AnimeController{
             }
         })
     }
-
     static atualizarAnime = (req, res) => {
         const id = req.params.id;
 
@@ -44,6 +42,17 @@ class AnimeController{
             }
         })
 
+    }
+    static deletarAnime = (req, res) => {
+        const id = req.params.id;
+
+        animes.findByIdAndDelete(id, (err) => {
+            if(!err){
+                res.status(200).send({message: 'O anime foi removido '})
+            } else {
+                res.status(500).send({message : err.message })
+            }
+        })
     }
 
 
