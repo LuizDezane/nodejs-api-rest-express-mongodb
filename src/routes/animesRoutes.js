@@ -5,5 +5,6 @@ const router = express.Router();
 
 router
   .get("/animes", AnimeController.listarAnimes)
+  .post("/animes", AnimeController.cadastrarAnime)
 
 export default router;

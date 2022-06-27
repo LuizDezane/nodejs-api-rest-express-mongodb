@@ -19,11 +19,6 @@ routes(app)
 //     {id: 2, titulo : "Naruto"},
 //     {id: 3, titulo : "Hunter x Hunter"},]
 
-app.post('/animes',(req,res) => {
-    animes.push(req.body);
-    res.status(201).send("Anime cadastrado com sucesso")
-})
-
 app.put('/animes/:id', (req,res)=>{
     let index = buscaAnime(req.params.id);
     animes[index].titulo = req.body.titulo;
