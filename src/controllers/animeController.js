@@ -3,14 +3,18 @@ import animes from "../models/Anime.js"
 class AnimeController{
 
     static listarAnimes = (req,res) => {
-        animes.find((err, animes) => {
+        animes.find()
+        .populate('autor')
+        .exec((err, animes) => {
             res.status(200).json(animes);
     }) 
     }
     static listarAnimesPorId = (req, res) => {
         const id = req.params.id;
 
-        animes.findById(id, (err, animes) => {
+        animes.findById(id)
+         .populate('autor', 'nome')
+         .exec((err, animes) => {
             if(err){
                 res.status(400).send({message: `${err.message} - Id do anime não localizado.`})
             } else {
