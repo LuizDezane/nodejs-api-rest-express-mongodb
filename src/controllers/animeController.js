@@ -58,8 +58,15 @@ class AnimeController{
             }
         })
     }
+    static listarAnimePorEditora = (req, res) => {
+        const editora = req.query.editora
+
+        animes.find({'editora' : editora}, {}, (err, animes) => {
+            res.status(200).send(animes);
+        })
 
 
+    }
 }
 
 export default AnimeController

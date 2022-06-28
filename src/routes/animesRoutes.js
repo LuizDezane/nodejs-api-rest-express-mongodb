@@ -5,6 +5,7 @@ const router = express.Router();
 
 router
   .get("/animes", AnimeController.listarAnimes)
+  .get("/livros/busca", AnimeController.listarAnimePorEditora)
   .get("/animes/:id", AnimeController.listarAnimesPorId)
   .post("/animes", AnimeController.cadastrarAnime)
   .put("/animes/:id", AnimeController.atualizarAnime)
